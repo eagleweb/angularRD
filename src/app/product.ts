@@ -2,9 +2,6 @@ export class Product {
   id: number;
   imgUrl: string;
   name: string;
+  desc: string;
   price: number;
-
-  constructor(values: object = {}) {
-    Object.assign(this, values);
-  }
 }
