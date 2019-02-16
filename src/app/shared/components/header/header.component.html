@@ -1,6 +1,7 @@
-<nav>
-  <a [routerLink]="['']" routerLinkActive="active">Home</a>
-  <a [routerLink]="['/products']" routerLinkActive="active">Products list</a>
-  <a [routerLink]="['/products/', 5]" routerLinkActive="active">Item 1</a>
-  <a [routerLink]="['/cart']" routerLinkActive="active">Cart</a>
+<nav class="menu">
+  <button class="menu__item" mat-raised-button [routerLink]="['']">Home</button>
+  <button class="menu__item" mat-raised-button [routerLink]="['/products']">Products list</button>
+  <button class="menu__item" mat-raised-button [routerLink]="['/products/', 1]">Item 1</button>
+  <button class="menu__item" mat-raised-button [routerLink]="['/cart']">Cart</button>
 </nav>
+
