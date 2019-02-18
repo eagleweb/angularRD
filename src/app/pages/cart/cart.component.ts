@@ -29,7 +29,9 @@ export class CartComponent implements OnInit {
   }
 
   public removeItem(index: number) {
-
+    const tempCart = this.cartItems;
+    tempCart.splice(index, 1);
+    this.cartItems = tempCart;
   }
 
 }

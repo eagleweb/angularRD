@@ -5,5 +5,6 @@ export class Product {
   desc: string;
   quantity: number;
   size: string[];
+  sizeSelected: string;
   price: number;
 }
