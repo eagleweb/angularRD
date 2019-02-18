@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
 import {CartService} from '../../shared/service/cart.service';
 import {Product} from '../../product';
+import { map } from 'rxjs/operators';
 
 
 @Component({
@@ -12,26 +13,26 @@ import {Product} from '../../product';
 export class CartComponent implements OnInit {
 
   public cart$: Observable<Product[]>;
-  public cartItems: Product[] = [];
   public displayedColumns: string[] = ['item', 'quantity', 'cost', 'size', 'remove'];
 
   constructor( private cartService: CartService) {
     this.cart$ = this.cartService.getItems();
-    this.cart$.subscribe(val => this.cartItems = val);
   }
 
   ngOnInit() {
-
   }
 
   public getTotalCost() {
-    return this.cartItems.map(t => t.price * t.quantity).reduce((acc, value) => acc + value, 0);
+    return this.cart$.pipe(
+      map((item: Product[]) => {
+        return item.reduce((prev, curr: Product) => {
+          return prev + curr.price * curr.quantity;
+        }, 0);
+      })
+    );
   }
 
   public removeItem(index: number) {
-    const tempCart = this.cartItems;
-    tempCart.splice(index, 1);
-    this.cartItems = tempCart;
   }
 
 }
