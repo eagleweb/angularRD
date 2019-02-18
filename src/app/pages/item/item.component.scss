@@ -1,3 +1,20 @@
 :host {
   flex: 1 0 auto;
 }
+
+.product {
+  display: flex;
+  justify-content: center;
+
+  .product-image img{
+    width: 500px;
+  }
+
+  .product-info {
+    width: 500px;
+
+    button {
+      margin: 10px;
+    }
+  }
+}
