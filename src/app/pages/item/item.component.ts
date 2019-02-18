@@ -14,7 +14,9 @@ export class ItemComponent implements OnInit, OnDestroy {
 
   private id: number;
   private subscriptions: Subscription = new Subscription();
-  product: Product = { id: 0, imgUrl: '', name: '', desc: '', price: null };
+  private product: Product = { id: 0, quantity: 1, imgUrl: '', name: '', desc: '', price: null, sizeSelected: 's' };
+  public selectedSize: string;
+  public selectedQuantity: number;
 
   constructor( private activateRoute: ActivatedRoute, private apiService: ApiService, private cartService: CartService) {
     this.subscriptions.add(activateRoute.params.subscribe(params => this.id = params.id));
@@ -30,6 +32,8 @@ export class ItemComponent implements OnInit, OnDestroy {
   }
 
   public addToCart(product: Product) {
+    this.product.quantity = this.selectedQuantity;
+    this.product.sizeSelected = this.selectedSize;
     this.cartService.addItemToCart(product);
   }
 

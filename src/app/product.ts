@@ -3,5 +3,7 @@ export class Product {
   imgUrl: string;
   name: string;
   desc: string;
+  quantity: number;
+  size: string[];
   price: number;
 }

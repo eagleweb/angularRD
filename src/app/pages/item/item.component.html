@@ -6,8 +6,22 @@
     <h1>{{product.name}}</h1>
     <hr>
     <p>{{product.desc}}</p>
-    <span>Price: {{product.price}}$</span>
-    <button mat-raised-button color="accent" (click)="addToCart(product)">Add to cart</button>
+    <div class="product-config">
+      <mat-form-field color="accent">
+        <input matInput placeholder="Quantity" [(ngModel)]="selectedQuantity">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Choose size" [(ngModel)]="selectedSize">
+          <mat-option *ngFor="let size of product.size" [value]="size">
+            {{size}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="add-to-cart">
+      <span>Price: {{product.price}}$</span>
+      <button mat-raised-button color="accent" (click)="addToCart(product)">Add to cart</button>
+    </div>
   </div>
 </div>
 <div class="product-other">

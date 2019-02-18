@@ -13,7 +13,7 @@ export class CartComponent implements OnInit {
 
   public cart$: Observable<Product[]>;
   public cartItems: Product[] = [];
-  public displayedColumns: string[] = ['item', 'quantity', 'cost', 'remove'];
+  public displayedColumns: string[] = ['item', 'quantity', 'cost', 'size', 'remove'];
 
   constructor( private cartService: CartService) {
     this.cart$ = this.cartService.getItems();
@@ -21,14 +21,15 @@ export class CartComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
-  public getTotal(): Observable<number> {
-    return this.cartService.getTotalPrice();
+  public getTotalCost() {
+    return this.cartItems.map(t => t.price * t.quantity).reduce((acc, value) => acc + value, 0);
   }
 
-  public removeItem(item: Product) {
-    this.cartService.removeItemFromCart(item);
+  public removeItem(index: number) {
+
   }
 
 }

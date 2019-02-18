@@ -16,5 +16,16 @@
     button {
       margin: 10px;
     }
+
+    .add-to-cart {
+
+      button{
+        float: right;
+      }
+
+      span {
+        font-weight: bold;
+      }
+    }
   }
 }
