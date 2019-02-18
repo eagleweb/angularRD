@@ -15,16 +15,14 @@ export class ApiService {
 
   getProducts(): Observable<Product[]> {
     const url = `${apiUrl}/products`;
-    return this.http.get<Product[]>(url)
-      .pipe(
+    return this.http.get<Product[]>(url).pipe(
         catchError(this.handleError('getProducts', []))
       );
   }
 
   getProduct(id: number): Observable<Product> {
     const url = `${apiUrl}/products/${id}`;
-    return this.http.get<Product>(url)
-      .pipe(
+    return this.http.get<Product>(url).pipe(
         catchError(this.handleError<Product>(`getProduct id=${id}`))
       );
   }

@@ -1,0 +1,17 @@
+:host {
+  flex: 1 0 auto;
+}
+
+.cart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  table {
+    width: 800px;
+  }
+
+  tr.mat-footer-row {
+    font-weight: bold;
+  }
+}

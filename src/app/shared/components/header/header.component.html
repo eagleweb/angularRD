@@ -1,7 +1,12 @@
-<nav class="menu">
-  <button class="menu__item" mat-raised-button [routerLink]="['']">Home</button>
-  <button class="menu__item" mat-raised-button [routerLink]="['/products']">Products list</button>
-  <button class="menu__item" mat-raised-button [routerLink]="['/products/', 1]">Item 1</button>
-  <button class="menu__item" mat-raised-button [routerLink]="['/cart']">Cart</button>
-</nav>
-
+<div class="container">
+  <div class="logo">
+    <img src="assets/img/logo.png" alt="Logo">
+  </div>
+  <nav class="menu">
+    <button class="menu__item" mat-raised-button [routerLink]="['']">Home</button>
+    <button class="menu__item" mat-raised-button [routerLink]="['/products']">Products</button>
+  </nav>
+  <div class="cart" (click)="goToCart()">
+    <mat-icon matBadgeColor="warn" matBadge="{{(cart$ | async).length}}" [matBadgeHidden]="false">shopping_cart</mat-icon>
+  </div>
+</div>

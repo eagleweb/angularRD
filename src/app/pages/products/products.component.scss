@@ -1,0 +1,10 @@
+:host {
+  flex: 1 0 auto;
+}
+
+.products-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}

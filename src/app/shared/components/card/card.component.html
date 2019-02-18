@@ -1,0 +1,15 @@
+<mat-card class="card">
+  <mat-card-header>
+    <mat-card-title>{{item?.name}}</mat-card-title>
+    <mat-card-subtitle>T-shirt</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="{{item?.imgUrl}}" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <p>{{item?.desc}}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-flat-button color="primary" [routerLink]="['/products/', item?.id]">More</button>
+    <button mat-flat-button color="accent" (click)="addToCart(item)">Buy {{item?.price}}$</button>
+  </mat-card-actions>
+</mat-card>
+

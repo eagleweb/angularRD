@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { ApiService } from '../shared/service/api.service';
-import { Product } from '../product';
+import { ApiService } from '../../shared/service/api.service';
+import { CartService } from '../../shared/service/cart.service';
+import { Product } from '../../product';
 
 @Component({
   selector: 'app-item',
@@ -16,20 +17,23 @@ export class ItemComponent implements OnInit {
   product: Product = { id: 0, imgUrl: '', name: '', desc: '', price: null };
   isLoadingResults = true;
 
-  constructor( private activateRoute: ActivatedRoute, private api: ApiService ) {
+  constructor( private activateRoute: ActivatedRoute, private apiService: ApiService, private cartService: CartService) {
     this.subscription = activateRoute.params.subscribe(params => this.id = params.id);
   }
 
   ngOnInit() {
-    this.api.getProduct(this.id)
+    this.apiService.getProduct(this.id)
       .subscribe(res => {
         this.product = res;
-        console.log(this.product);
         this.isLoadingResults = false;
       }, err => {
         console.log(err);
         this.isLoadingResults = false;
       });
+  }
+
+  public addToCart(product: Product) {
+    this.cartService.addItemToCart(product);
   }
 
 }

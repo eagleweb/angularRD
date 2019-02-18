@@ -1,0 +1,8 @@
+<h2>Products list</h2>
+<button mat-flat-button color="primary" (click)="filterByPrice()">Show more then 100$</button>
+<div class="products-container">
+  <div *ngIf="showLoader">
+  <mat-spinner></mat-spinner>
+  </div>
+  <app-card *ngFor="let product of products" [item]="product"></app-card>
+</div>

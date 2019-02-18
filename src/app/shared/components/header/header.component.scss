@@ -1,6 +1,21 @@
-.menu {
+.container {
+  display: flex;
+  justify-content: space-around;
 
-  .menu__item {
-    margin-right: 10px;
+  .logo {
+    margin: 10px;
+    img{
+      width: 150px;
+    }
+  }
+
+  .menu {
+    .menu__item {
+      margin-right: 10px;
+    }
+  }
+  .cart {
+    margin-top: 20px;
+    cursor: pointer;
   }
 }
