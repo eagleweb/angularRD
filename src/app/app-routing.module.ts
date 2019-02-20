@@ -1,29 +1,19 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
-import { HomeComponent } from './pages/home/home.component';
-import { ProductsComponent } from './pages/products/products.component';
-import { CartComponent } from './pages/cart/cart.component';
-import { ItemComponent } from './pages/item/item.component';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
-    component: HomeComponent,
-    data: { title: 'Online shop' }
+    path: 'cart',
+    loadChildren: './cart/cart.module#CartModule'
   },
   {
     path: 'products',
-    component: ProductsComponent,
-    pathMatch: 'full',
-    data: { title: 'List of Products' }
-  },
-  {path: 'products/:id', component: ItemComponent},
-  {path: 'cart', component: CartComponent}
+    loadChildren: './products/products.module#ProductsModule'
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules})],
   exports: [RouterModule]
 })
 

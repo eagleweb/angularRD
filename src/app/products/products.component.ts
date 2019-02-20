@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {from, Subscription} from 'rxjs';
 import { filter, tap } from 'rxjs/operators';
-import { ApiService } from '../../shared/service/api.service';
-import { Product } from '../../product';
+import { ApiService } from '../core/services/api.service';
+import { Product } from '../core/models/product.model';
 
 
 @Component({

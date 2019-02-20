@@ -1,36 +1,28 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
-import { MaterialModule } from './shared/material/material.module';
+import { CoreModule } from './core/core.module';
+import { SharedModule, FooterComponent, HeaderComponent } from './shared';
+import { HomeModule } from './home/home.module';
+
 import { AppComponent } from './app.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { HeaderComponent } from './shared/components/header/header.component';
-import { FooterComponent } from './shared/components/footer/footer.component';
-import { HomeComponent } from './pages/home/home.component';
-import { ProductsComponent } from './pages/products/products.component';
-import { CartComponent } from './pages/cart/cart.component';
-import { ItemComponent } from './pages/item/item.component';
-import { CardComponent } from './shared/components/card/card.component';
+
 import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent,
-    HomeComponent,
-    ProductsComponent,
-    CartComponent,
-    ItemComponent,
-    CardComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    MaterialModule,
+    CoreModule,
+    SharedModule,
+    HomeModule,
     BrowserAnimationsModule,
     FormsModule
   ],

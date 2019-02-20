@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { ApiService } from '../../shared/service/api.service';
-import { CartService } from '../../shared/service/cart.service';
-import { Product } from '../../product';
+import { ApiService } from '../core/services/api.service';
+import { CartService } from '../core/services/cart.service';
+import { Product } from '../core/models/product.model';
 
 @Component({
   selector: 'app-item',

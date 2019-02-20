@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Product } from '../../product';
+import { Product } from '../models/product.model';
 
 const apiUrl = 'http://localhost:3000';
 
