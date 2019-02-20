@@ -5,7 +5,7 @@ import { ItemComponent } from './item.component';
 
 const routes: Routes = [
   {
-    path: 'product',
+    path: 'products',
     children: [
       {
         path: '',
