@@ -13,13 +13,13 @@
       <mat-form-field>
         <mat-select placeholder="Choose size" [(ngModel)]="selectedSize">
           <mat-option *ngFor="let size of product.size" [value]="size">
-            {{size}}
+            {{size | uppercase}}
           </mat-option>
         </mat-select>
       </mat-form-field>
     </div>
     <div class="add-to-cart">
-      <span>Price: {{product.price}}$</span>
+      <span>Price: {{product.price | currency}}</span>
       <button mat-raised-button color="accent" (click)="addToCart(product)">Add to cart</button>
     </div>
   </div>

@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { ProductsRoutingModule } from './products-routing.module';
 
-import { ProductsComponent } from './products.component';
-import { ItemComponent } from './item.component';
+import { ProductsComponent } from './product-list/products.component';
+import { ItemComponent } from './product-detail/item.component';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { ItemComponent } from './item.component';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     SharedModule,
     ProductsRoutingModule
   ]

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product.model';
-import {BehaviorSubject, Observable} from 'rxjs';
-import { map } from 'rxjs/operators';
+import {BehaviorSubject, Observable, from} from 'rxjs';
+import { map, reduce } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -15,27 +15,22 @@ export class CartService {
     this.cartSubject.subscribe( val => this.cart = val);
   }
 
-  public getItems(): Observable<Product[]> {
+  getItems(): Observable<Product[]> {
     return this.cartSubject.asObservable();
   }
 
-  public addItemToCart(item: Product): void {
+  addItemToCart(item: Product): void {
     this.cartSubject.next([...this.cart, item]);
   }
 
-  public removeItemFromCart(item: Product) {
-    const curr = [...this.cart];
-    const newCart = curr.filter(val => val.id !== item.id);
-    this.cartSubject.next(newCart);
+  removeItemFromCart(item: number) {
+    this.cart.splice(item, 1);
   }
 
-  public getTotalPrice(): Observable<number> {
-    return this.cartSubject.pipe(
-      map((item: Product[]) => {
-        return item.reduce((prev, curr: Product) => {
-          return prev + curr.price;
-        }, 0);
-      })
+  getTotalPrice(): Observable<number> {
+    return from(this.cart).pipe(
+      map(( item ) => item),
+      reduce( (acc, val: Product) => acc + val.price * val.quantity, 0),
     );
   }
 }

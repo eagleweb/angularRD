@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { MaterialModule } from './material/material.module';
 import { CardComponent } from './card/card.component';
 
@@ -9,6 +10,7 @@ import { CardComponent } from './card/card.component';
   ],
   imports: [
     CommonModule,
+    RouterModule,
     MaterialModule
   ],
   exports: [

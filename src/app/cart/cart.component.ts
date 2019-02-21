@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {Observable} from 'rxjs';
 import {CartService} from '../core/services/cart.service';
 import {Product} from '../core/models/product.model';
-import { map } from 'rxjs/operators';
+import {MatTable} from '@angular/material';
 
 
 @Component({
@@ -12,27 +12,25 @@ import { map } from 'rxjs/operators';
 })
 export class CartComponent implements OnInit {
 
+  @ViewChild(MatTable) table: MatTable<any>;
+
   public cart$: Observable<Product[]>;
   public displayedColumns: string[] = ['item', 'quantity', 'cost', 'size', 'remove'];
 
   constructor( private cartService: CartService) {
-    this.cart$ = this.cartService.getItems();
   }
 
   ngOnInit() {
+    this.cart$ = this.cartService.getItems();
   }
 
-  public getTotalCost() {
-    return this.cart$.pipe(
-      map((item: Product[]) => {
-        return item.reduce((prev, curr: Product) => {
-          return prev + curr.price * curr.quantity;
-        }, 0);
-      })
-    );
+  getTotalCost() {
+    return this.cartService.getTotalPrice();
   }
 
-  public removeItem(index: number) {
+  removeItem(index: number) {
+    this.cartService.removeItemFromCart(index);
+    this.table.renderRows();
   }
 
 }
