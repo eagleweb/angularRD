@@ -1,6 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Product } from '../../core/models/product.model';
+import { Filter } from '../../core/models/filter.model';
 import { ProductsService } from '../products.service';
 
 
@@ -9,10 +10,10 @@ import { ProductsService } from '../products.service';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent implements OnInit, OnDestroy {
+export class ProductsComponent implements OnInit {
 
-  subscriptions: Subscription = new Subscription();
   public products$: Observable<Product[]>;
+  public filter: Filter = { min_price: 0, max_price: 10000, size: ''};
 
   constructor( private productsService: ProductsService ) {
   }
@@ -21,14 +22,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.products$ = this.productsService.getAllProducts();
   }
 
-  filterByPrice() {
-    this.products$ = this.productsService.filterProducts(100);
-    // arr.subscribe(val => console.log(val));
-    // this.subscriptions.add(filter$.subscribe(val => this.products = tempArray));
-  }
-
-  ngOnDestroy() {
-    this.subscriptions.unsubscribe();
+  filterProducts(filter: Filter) {
+    this.products$ = this.productsService.filterProducts(filter);
   }
 
 }

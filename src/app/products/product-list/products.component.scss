@@ -2,9 +2,20 @@
   flex: 1 0 auto;
 }
 
-.products-container {
+.container {
   display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
-  flex-wrap: wrap;
+
+  .products-filter {
+    max-width: 300px;
+    margin: 10px;
+  }
+
+  .products {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
 }
+
+
