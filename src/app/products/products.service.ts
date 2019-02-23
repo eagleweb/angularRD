@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ApiService } from '../core/services/api.service';
+import { ApiService } from '../core/services/api/api.service';
 import { map } from 'rxjs/operators';
 import { Product } from '../core/models/product.model';
 import { Filter } from '../core/models/filter.model';

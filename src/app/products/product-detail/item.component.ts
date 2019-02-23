@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { ApiService } from '../../core/services/api.service';
-import { CartService } from '../../core/services/cart.service';
+import { ApiService } from '../../core/services/api/api.service';
+import { CartService } from '../../core/services/cart/cart.service';
 import { Product } from '../../core/models/product.model';
 
 @Component({

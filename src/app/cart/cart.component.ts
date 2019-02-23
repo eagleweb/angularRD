@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {Observable} from 'rxjs';
-import {CartService} from '../core/services/cart.service';
+import {CartService} from '../core/services/cart/cart.service';
 import {Product} from '../core/models/product.model';
 import {MatTable} from '@angular/material';
 
@@ -22,6 +22,7 @@ export class CartComponent implements OnInit {
 
   ngOnInit() {
     this.cart$ = this.cartService.getItems();
+
   }
 
   getTotalCost() {
