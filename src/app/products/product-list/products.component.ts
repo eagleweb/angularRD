@@ -13,7 +13,7 @@ import { ProductsService } from '../products.service';
 export class ProductsComponent implements OnInit {
 
   public products$: Observable<Product[]>;
-  public filter: Filter = { min_price: 0, max_price: 10000, size: ''};
+  public filterObj: Filter = { min_price: 0, max_price: 10000, size: ''};
 
   constructor( private productsService: ProductsService ) {
   }

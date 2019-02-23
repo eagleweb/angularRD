@@ -3,15 +3,15 @@
   <div class="products-filter">
     <div class="example-container">
       <mat-form-field>
-        <input matInput placeholder="Min price" [(ngModel)]="filter.min_price">
+        <input matInput placeholder="Min price" [(ngModel)]="filterObj.min_price">
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput placeholder="Max price" [(ngModel)]="filter.max_price">
+        <input matInput placeholder="Max price" [(ngModel)]="filterObj.max_price">
       </mat-form-field>
 
       <mat-form-field>
-        <mat-select placeholder="Select size" [(ngModel)]="filter.size">
+        <mat-select placeholder="Select size" [(ngModel)]="filterObj.size">
           <mat-option value="xxl">XXL</mat-option>
           <mat-option value="xl">XL</mat-option>
           <mat-option value="m">M</mat-option>
@@ -20,7 +20,7 @@
         </mat-select>
       </mat-form-field>
     </div>
-    <button mat-flat-button color="primary" (click)="filterProducts(filter)">Filter</button>
+    <button mat-flat-button color="primary" (click)="filterProducts(filterObj)">Filter</button>
   </div>
   <div class="products">
     <app-card *ngFor="let product of products$ | async" [item]="product"></app-card>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from '../core/services/api/api.service';
-import { map } from 'rxjs/operators';
+import { mergeMap, filter, toArray } from 'rxjs/operators';
 import { Product } from '../core/models/product.model';
 import { Filter } from '../core/models/filter.model';
 import { Observable } from 'rxjs';
@@ -16,10 +16,11 @@ export class ProductsService {
     return this.apiService.getProducts();
   }
 
-  filterProducts(filter: Filter): Observable<Product[]> {
+  filterProducts(filterObj: Filter): Observable<Product[]> {
     return this.apiService.getProducts().pipe(
-      map( item => item.filter( val => val.price < filter.max_price && val.price > filter.min_price))
-    );
+      mergeMap( item => item ),
+      filter( val => val.price < filterObj.max_price && val.price > filterObj.min_price),
+      toArray()
+      );
   }
 }
-
