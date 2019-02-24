@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
@@ -12,11 +12,12 @@ import { ProductsService } from '../services/products/products.service';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent implements OnInit, OnDestroy {
 
   public products$: Observable<Product[]>;
   public filterObj: Filter = { min_price: 0, max_price: 10000, size: '', category: ''};
   public searchField: FormControl;
+  public search$;
 
   constructor( private productsService: ProductsService ) {
   }
@@ -27,8 +28,8 @@ export class ProductsComponent implements OnInit {
     this.searchProducts();
   }
 
-  searchProducts() {
-    this.searchField.valueChanges.pipe(
+  searchProducts(): void {
+    this.search$ = this.searchField.valueChanges.pipe(
       debounceTime(300),
       distinctUntilChanged(),
       switchMap( searchField => this.productsService.searchProducts(searchField))
@@ -42,6 +43,10 @@ export class ProductsComponent implements OnInit {
   clearFilter(): void {
     this.filterObj = { min_price: 0, max_price: 10000, size: '', category: ''};
     this.products$ = this.productsService.getAllProducts();
+  }
+
+  ngOnDestroy() {
+    this.search$.unsubscribe();
   }
 
 }
