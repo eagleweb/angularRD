@@ -5,9 +5,13 @@
 .container {
   display: flex;
 
+  .search-form {
+    margin-left: 220px;
+  }
+
   .products-filter {
     max-width: 300px;
-    margin: 10px;
+    margin: 10px 20px;
   }
 
   .products {

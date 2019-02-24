@@ -14,7 +14,8 @@ export class ItemComponent implements OnInit, OnDestroy {
 
   private id: number;
   private subscriptions: Subscription = new Subscription();
-  private product: Product = { id: 0, quantity: 1, imgUrl: '', name: '', desc: '', price: null, sizeSelected: 's', size: [] };
+  private product: Product = { id: 0, quantity: 1, imgUrl: '', name: '', desc: '', price: null, sizeSelected: 's',
+    size: [], category: '' };
   public selectedSize: string;
   public selectedQuantity: number;
 

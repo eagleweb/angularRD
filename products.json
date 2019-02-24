@@ -7,7 +7,8 @@
       "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       "price": 110,
       "quantity": 1,
-      "size": ["xxl", "xl", "m", "s", "l"]
+      "size": ["xxl", "xl", "m", "s", "l"],
+      "category": "T-shirts"
     },
     {
       "id": 2,
@@ -16,7 +17,8 @@
       "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       "price": 91,
       "quantity": 1,
-      "size": ["xxl", "xl", "s", "l"]
+      "size": ["xxl", "xl", "s", "l"],
+      "category": "Shoes"
     },
     {
       "id": 3,
@@ -25,7 +27,8 @@
       "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       "price": 94.5,
       "quantity": 1,
-      "size": ["xl", "m", "s", "l"]
+      "size": ["xl", "m", "s", "l"],
+      "category": "Bags"
     },
     {
       "id": 4,
@@ -34,7 +37,8 @@
       "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       "price": 438.9,
       "quantity": 1,
-      "size": ["xxl", "xl", "m", "s"]
+      "size": ["xxl", "xl", "m", "s"],
+      "category": "Watches"
     },
     {
       "id": 5,
@@ -43,7 +47,8 @@
       "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       "price": 20,
       "quantity": 1,
-      "size": ["xxl", "m", "s", "l"]
+      "size": ["xxl", "m", "s", "l"],
+      "category": "Accessories"
     }
   ]
 }

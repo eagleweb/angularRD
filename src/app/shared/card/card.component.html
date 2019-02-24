@@ -1,9 +1,9 @@
 <mat-card class="card">
   <mat-card-header>
     <mat-card-title>{{item?.name}}</mat-card-title>
-    <mat-card-subtitle>T-shirt</mat-card-subtitle>
+    <mat-card-subtitle>{{item?.category}}</mat-card-subtitle>
   </mat-card-header>
-  <img mat-card-image src="{{item?.imgUrl}}" alt="Photo of a Shiba Inu">
+  <img mat-card-image src="{{item?.imgUrl}}" alt="Image">
   <mat-card-content>
     <p>{{item?.desc}}</p>
   </mat-card-content>

@@ -7,4 +7,5 @@ export interface Product {
   size: string[];
   sizeSelected: string;
   price: number;
+  category: string;
 }
