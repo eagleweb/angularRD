@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
 import { Product } from '../../core/models/product.model';
@@ -14,10 +14,11 @@ import { ProductsService } from '../services/products/products.service';
 })
 export class ProductsComponent implements OnInit, OnDestroy {
 
+  private subscriptions: Subscription = new Subscription();
+
   public products$: Observable<Product[]>;
   public filterObj: Filter = { min_price: 0, max_price: 10000, size: '', category: ''};
   public searchField: FormControl;
-  public search$;
 
   constructor( private productsService: ProductsService ) {
   }
@@ -29,11 +30,12 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   searchProducts(): void {
-    this.search$ = this.searchField.valueChanges.pipe(
-      debounceTime(300),
-      distinctUntilChanged(),
-      switchMap( searchField => this.productsService.searchProducts(searchField))
-    ).subscribe(res => this.products$ = of(res));
+    this.subscriptions.add( this.searchField.valueChanges.pipe(
+        debounceTime(300),
+        distinctUntilChanged(),
+        switchMap( searchField => this.productsService.searchProducts(searchField))
+      ).subscribe(res => this.products$ = of(res))
+    );
   }
 
   filterProducts(filter: Filter): void {
@@ -46,7 +48,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.search$.unsubscribe();
+    this.subscriptions.unsubscribe();
   }
 
 }

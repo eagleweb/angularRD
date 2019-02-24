@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { CartService } from '../../../core/services/cart/cart.service';
 import { Product } from '../../../core/models/product.model';
+import { AuthService } from '../../../core/services/auth/auth.service';
 
 
 @Component({
@@ -14,15 +15,14 @@ export class HeaderComponent implements OnInit {
 
   public cart$: Observable<Product[]>;
 
-  constructor( private cartService: CartService, private router: Router) {
-    this.cart$ = this.cartService.getItems();
-    this.cart$.subscribe();
+  constructor( private cartService: CartService, private router: Router, public auth: AuthService) {
   }
 
   ngOnInit() {
+    this.cart$ = this.cartService.getItems();
   }
 
-  goToCart() {
+  goToCart(): void {
     this.router.navigateByUrl('/cart');
   }
 

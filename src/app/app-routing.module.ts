@@ -11,6 +11,11 @@ const routes: Routes = [
     path: 'products',
     loadChildren: './products/products.module#ProductsModule',
     data: { title: 'Products' }
+  },
+  {
+    path: 'account',
+    loadChildren: './account/account.module#AccountModule',
+    data: { title: 'Account' }
   }
 ];
 

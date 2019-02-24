@@ -16,14 +16,16 @@ export class ItemComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription = new Subscription();
   private product: Product = { id: 0, quantity: 1, imgUrl: '', name: '', desc: '', price: null, sizeSelected: 's',
     size: [], category: '' };
+
   public selectedSize: string;
   public selectedQuantity: number;
 
   constructor( private activateRoute: ActivatedRoute, private apiService: ApiService, private cartService: CartService) {
-    this.subscriptions.add(activateRoute.params.subscribe(params => this.id = params.id));
   }
 
   ngOnInit() {
+    this.subscriptions.add(this.activateRoute.params.subscribe(params => this.id = params.id));
+
     this.apiService.getProduct(this.id)
       .subscribe(res => {
         this.product = res;
@@ -32,7 +34,7 @@ export class ItemComponent implements OnInit, OnDestroy {
       });
   }
 
-  public addToCart(product: Product) {
+  public addToCart(product: Product): void {
     this.product.quantity = this.selectedQuantity;
     this.product.sizeSelected = this.selectedSize;
     this.cartService.addItemToCart(product);

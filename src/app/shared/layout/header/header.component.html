@@ -5,8 +5,25 @@
   <nav class="menu">
     <button class="menu__item" mat-raised-button [routerLink]="['']">Home</button>
     <button class="menu__item" mat-raised-button [routerLink]="['/products']">Products</button>
+    <button class="menu__item" mat-raised-button [routerLink]="['/account']">Account</button>
   </nav>
   <div class="cart" (click)="goToCart()">
-    <mat-icon matBadgeColor="warn" matBadge="{{(cart$ | async).length}}" [matBadgeHidden]="false">shopping_cart</mat-icon>
+    <mat-icon matBadgeColor="warn"
+              matBadge="{{(cart$ | async).length}}"
+              [matBadgeHidden]="(cart$ | async).length == 0"
+    >shopping_cart</mat-icon>
+  </div>
+  <div class="auth">
+    <button mat-stroked-button
+      *ngIf="!auth.isAuthenticated()"
+      (click)="auth.login()">
+      Login
+    </button>
+
+    <button mat-stroked-button
+      *ngIf="auth.isAuthenticated()"
+      (click)="auth.logout()">
+      Logout
+    </button>
   </div>
 </div>
