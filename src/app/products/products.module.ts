@@ -7,12 +7,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { ProductsComponent } from './product-list/products.component';
 import { ItemComponent } from './product-detail/item.component';
+import { FilterComponent } from './product-list/filter/filter.component';
 
 
 @NgModule({
   declarations: [
     ProductsComponent,
-    ItemComponent
+    ItemComponent,
+    FilterComponent
   ],
   imports: [
     CommonModule,

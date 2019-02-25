@@ -1,0 +1,40 @@
+<form [formGroup]="filterForm" (ngSubmit)="onSubmit()">
+  <mat-form-field >
+    <input matInput placeholder="Min price" formControlName="minPrice">
+    <mat-error *ngIf="filterForm.controls['minPrice'].invalid && filterForm.controls['minPrice'].touched">
+      Please enter only numbers
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field >
+    <input matInput placeholder="Max price" formControlName="maxPrice">
+    <mat-error *ngIf="filterForm.controls['maxPrice'].invalid && filterForm.controls['maxPrice'].touched">
+      Please enter only numbers
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+      <mat-select placeholder="Select size" formControlName="size">
+        <mat-option value="xxl">XXL</mat-option>
+        <mat-option value="xl">XL</mat-option>
+        <mat-option value="m">M</mat-option>
+        <mat-option value="s">S</mat-option>
+        <mat-option value="l">L</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+      <mat-select placeholder="Select category" formControlName="category">
+        <mat-option value="accessories">Accessories</mat-option>
+        <mat-option value="bags">Bags</mat-option>
+        <mat-option value="shoes">Shoes</mat-option>
+        <mat-option value="t-shirts">T-shirts</mat-option>
+        <mat-option value="watches">Watches</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div>
+    <button mat-flat-button color="primary" type="submit">Filter</button>
+    <button mat-flat-button (click)="resetForm()">Clear</button>
+  </div>
+</form>

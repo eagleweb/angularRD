@@ -10,37 +10,7 @@
 
 <div class="container">
   <div class="products-filter">
-    <div>
-      <mat-form-field>
-        <input matInput placeholder="Min price" [(ngModel)]="filterObj.min_price">
-      </mat-form-field>
-
-      <mat-form-field>
-        <input matInput placeholder="Max price" [(ngModel)]="filterObj.max_price">
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-select placeholder="Select size" [(ngModel)]="filterObj.size">
-          <mat-option value="xxl">XXL</mat-option>
-          <mat-option value="xl">XL</mat-option>
-          <mat-option value="m">M</mat-option>
-          <mat-option value="s">S</mat-option>
-          <mat-option value="l">L</mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-select placeholder="Select category" [(ngModel)]="filterObj.category">
-          <mat-option value="accessories">Accessories</mat-option>
-          <mat-option value="bags">Bags</mat-option>
-          <mat-option value="shoes">Shoes</mat-option>
-          <mat-option value="t-shirts">T-shirts</mat-option>
-          <mat-option value="watches">Watches</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <button mat-flat-button color="primary" (click)="filterProducts(filterObj)">Filter</button>
-    <button mat-flat-button (click)="clearFilter()">Clear</button>
+    <app-filter (submit)="filterProducts($event)"></app-filter>
   </div>
 
   <div class="products">

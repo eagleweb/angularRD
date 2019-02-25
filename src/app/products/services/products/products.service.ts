@@ -16,18 +16,19 @@ export class ProductsService {
     return this.apiService.getProducts();
   }
 
-  filterProducts(filterObj: Filter): Observable<Product[]> {
-    return this.apiService.getProducts().pipe(
-      mergeMap( item => item ),
-      filter( val => val.price < filterObj.max_price && val.price > filterObj.min_price),
-      filter( val => {
-        return filterObj.size ? val.size.includes(filterObj.size) : true;
-      }),
-      filter( val => {
-        return filterObj.category ? val.category.toLowerCase() === filterObj.category : true;
-      }),
-      toArray()
-      );
+  filterProducts(filterObj) {
+    console.log(filterObj.maxPrice.value);
+    // return this.apiService.getProducts().pipe(
+    //   mergeMap( item => item ),
+    //   filter( val => val.price < filterObj.maxPrice.value && val.price > filterObj.minPrice.value),
+    //   filter( val => {
+    //     return filterObj.size.value ? val.size.includes(filterObj.size.value) : true;
+    //   }),
+    //   filter( val => {
+    //     return filterObj.category.value ? val.category.toLowerCase() === filterObj.category.value : true;
+    //   }),
+    //   toArray()
+    //   );
   }
 
   searchProducts(searchField: string): Observable<Product[]> {
