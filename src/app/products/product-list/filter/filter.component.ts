@@ -9,7 +9,7 @@ import { Filter } from '../../../core/models/filter.model';
 })
 export class FilterComponent implements OnInit {
 
-  @Output() submit = new EventEmitter<Filter>();
+  @Output() submit: EventEmitter<Filter> = new EventEmitter();
 
   public filterForm: FormGroup;
   public filterObj: Filter;
@@ -17,6 +17,9 @@ export class FilterComponent implements OnInit {
   constructor( private formBuilder: FormBuilder ) { }
 
   ngOnInit() {
+
+    this.filterObj = { min_price: null, max_price: null, category: null, size: null};
+
     this.filterForm = this.formBuilder.group({
       minPrice: ['', Validators.pattern('[0-9]*')],
       maxPrice: ['', Validators.pattern('[0-9]*')],
@@ -27,7 +30,7 @@ export class FilterComponent implements OnInit {
   }
 
   onSubmit() {
-    this.filterObj.min_price = this.filterForm.get('minPrice').value || 0;
+    this.filterObj.min_price = this.filterForm.get('minPrice').value;
     this.filterObj.max_price = this.filterForm.get('maxPrice').value;
     this.filterObj.size = this.filterForm.get('size').value;
     this.filterObj.category = this.filterForm.get('category').value;

@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {Observable} from 'rxjs';
-import {CartService} from '../core/services/cart/cart.service';
-import {Product} from '../core/models/product.model';
-import {MatTable} from '@angular/material';
+import { Observable } from 'rxjs';
+import { CartService } from '../core/services/cart/cart.service';
+import { Product } from '../core/models/product.model';
+import { MatTable } from '@angular/material';
 
 
 @Component({
@@ -22,16 +22,19 @@ export class CartComponent implements OnInit {
 
   ngOnInit() {
     this.cart$ = this.cartService.getItems();
-
   }
 
   getTotalCost() {
     return this.cartService.getTotalPrice();
   }
 
-  removeItem(index: number) {
+  removeItem(index: number): void {
     this.cartService.removeItemFromCart(index);
     this.table.renderRows();
+  }
+
+  changeQuantity(index: number, operation: string): void {
+    this.cartService.changeQuantity(index, operation);
   }
 
 }

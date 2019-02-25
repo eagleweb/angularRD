@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../../models/product.model';
-import {BehaviorSubject, Observable, from} from 'rxjs';
+import { BehaviorSubject, Observable, from } from 'rxjs';
 import { map, reduce } from 'rxjs/operators';
 
 @Injectable({
@@ -32,5 +32,15 @@ export class CartService {
       map(( item ) => item),
       reduce( (acc, val: Product) => acc + val.price * val.quantity, 0),
     );
+  }
+
+  changeQuantity(index: number, operation: string): void {
+    if (operation === 'inc') {
+      this.cart[index].quantity++;
+    } else {
+      if (this.cart[index].quantity === 1) {
+        return;
+      } else { this.cart[index].quantity--; }
+    }
   }
 }

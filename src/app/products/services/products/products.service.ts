@@ -20,7 +20,12 @@ export class ProductsService {
     console.log(filterObj);
     return this.apiService.getProducts().pipe(
       mergeMap( item => item ),
-      filter( val => val.price < filterObj.max_price && val.price > filterObj.min_price),
+      filter( val => {
+        return filterObj.max_price ? val.price < filterObj.max_price : true;
+      }),
+      filter( val => {
+        return filterObj.min_price ? val.price > filterObj.min_price : true;
+      }),
       filter( val => {
         return filterObj.size ? val.size.includes(filterObj.size) : true;
       }),

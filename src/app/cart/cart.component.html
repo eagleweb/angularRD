@@ -10,7 +10,11 @@
 
     <ng-container matColumnDef="quantity">
       <th mat-header-cell *matHeaderCellDef> Quantity </th>
-      <td mat-cell *matCellDef="let transaction"> {{transaction.quantity}} </td>
+      <td mat-cell *matCellDef="let transaction; let i = index;">
+        <button mat-icon-button (click)="changeQuantity(i, 'inc')"><mat-icon>arrow_drop_up</mat-icon></button>
+        {{transaction.quantity}}
+        <button mat-icon-button (click)="changeQuantity(i)"><mat-icon>arrow_drop_down</mat-icon></button>
+      </td>
       <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
 
