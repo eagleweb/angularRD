@@ -22,13 +22,7 @@ export class TitleService {
       map(() => this.activatedRoute),
       map(route => route.firstChild),
       switchMap(route => route.data),
-      map((data) => {
-        if (data.title) {
-          return data.title;
-        } else {
-          return 'Angular product app';
-        }
-      })
+      map((data) => data.title || 'Angular product app')
     )
       .subscribe((pathString) => this.titleService.setTitle(pathString));
   }

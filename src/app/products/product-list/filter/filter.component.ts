@@ -9,10 +9,10 @@ import { Filter } from '../../../core/models/filter.model';
 })
 export class FilterComponent implements OnInit {
 
-  @Output() submit = new EventEmitter<any>();
+  @Output() submit = new EventEmitter<Filter>();
 
   public filterForm: FormGroup;
-  public filterObj: Filter = { min_price: 0, max_price: 10000, size: '', category: ''};
+  public filterObj: Filter;
 
   constructor( private formBuilder: FormBuilder ) { }
 
@@ -27,7 +27,7 @@ export class FilterComponent implements OnInit {
   }
 
   onSubmit() {
-    this.filterObj.min_price = this.filterForm.get('minPrice').value;
+    this.filterObj.min_price = this.filterForm.get('minPrice').value || 0;
     this.filterObj.max_price = this.filterForm.get('maxPrice').value;
     this.filterObj.size = this.filterForm.get('size').value;
     this.filterObj.category = this.filterForm.get('category').value;

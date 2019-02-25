@@ -17,7 +17,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription = new Subscription();
 
   public products$: Observable<Product[]>;
-  public filterObj: Filter = { min_price: 0, max_price: 10000, size: '', category: ''};
   public searchField: FormControl;
 
   constructor( private productsService: ProductsService ) {
@@ -40,11 +39,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   filterProducts(filter: Filter): void {
     this.products$ = this.productsService.filterProducts(filter);
-  }
-
-  clearFilter(): void {
-    this.filterObj = { min_price: 0, max_price: 10000, size: '', category: ''};
-    this.products$ = this.productsService.getAllProducts();
   }
 
   ngOnDestroy() {

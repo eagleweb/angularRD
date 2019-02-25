@@ -17,6 +17,7 @@ export class ProductsService {
   }
 
   filterProducts(filterObj: Filter): Observable<Product[]> {
+    console.log(filterObj);
     return this.apiService.getProducts().pipe(
       mergeMap( item => item ),
       filter( val => val.price < filterObj.max_price && val.price > filterObj.min_price),
