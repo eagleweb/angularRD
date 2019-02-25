@@ -38,7 +38,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
     );
   }
 
-  filterProducts(filter): void {
+  filterProducts(filter: Filter): void {
     this.products$ = this.productsService.filterProducts(filter);
   }
 
