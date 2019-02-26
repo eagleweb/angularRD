@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from './material/material.module';
 import { CardComponent } from './card/card.component';
+import { SaleComponent } from './sale/sale.component';
 
 @NgModule({
   declarations: [
-    CardComponent
+    CardComponent,
+    SaleComponent
   ],
   imports: [
     CommonModule,
@@ -15,7 +17,8 @@ import { CardComponent } from './card/card.component';
   ],
   exports: [
     MaterialModule,
-    CardComponent
+    CardComponent,
+    SaleComponent
   ]
 })
 export class SharedModule { }

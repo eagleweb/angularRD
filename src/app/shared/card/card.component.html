@@ -9,7 +9,7 @@
   </mat-card-content>
   <mat-card-actions>
     <button mat-flat-button color="primary" [routerLink]="['/products/', item?.id]">More</button>
-    <button mat-flat-button color="accent" (click)="addToCart(item)">Buy {{item?.price}}$</button>
+    <span class="price">{{item?.price}}$</span>
   </mat-card-actions>
 </mat-card>
 

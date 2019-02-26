@@ -34,7 +34,7 @@
   </mat-form-field>
 </form>
 <div>
-  <button mat-flat-button color="primary" (click)="onSubmit()">Filter</button>
+  <button mat-flat-button color="primary" (click)="onSubmit()" disabled="filterForm.invalid">Filter</button>
   <button mat-flat-button (click)="resetForm()">Clear</button>
 </div>
 
