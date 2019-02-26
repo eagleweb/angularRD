@@ -29,7 +29,8 @@ export class FilterComponent implements OnInit {
 
   }
 
-  onSubmit() {
+  onSubmit(e): void {
+    e.stopPropagation();
     this.filterObj.min_price = this.filterForm.get('minPrice').value;
     this.filterObj.max_price = this.filterForm.get('maxPrice').value;
     this.filterObj.size = this.filterForm.get('size').value;
@@ -37,7 +38,7 @@ export class FilterComponent implements OnInit {
     this.submit.emit(this.filterObj);
   }
 
-  resetForm() {
+  resetForm(): void {
     this.filterForm.reset();
   }
 

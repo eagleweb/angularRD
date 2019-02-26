@@ -2,13 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from './material/material.module';
-import { CardComponent } from './card/card.component';
-import { SaleComponent } from './sale/sale.component';
+import { CardComponent } from './component/card/card.component';
+import { SaleComponent } from './component/sale/sale.component';
+import { CutStringPipe } from './pipe/cut';
 
 @NgModule({
   declarations: [
     CardComponent,
-    SaleComponent
+    SaleComponent,
+    CutStringPipe
   ],
   imports: [
     CommonModule,
@@ -18,7 +20,8 @@ import { SaleComponent } from './sale/sale.component';
   exports: [
     MaterialModule,
     CardComponent,
-    SaleComponent
+    SaleComponent,
+    CutStringPipe
   ]
 })
 export class SharedModule { }

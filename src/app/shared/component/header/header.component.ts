@@ -14,11 +14,13 @@ import { AuthService } from '../../../core/services/auth/auth.service';
 export class HeaderComponent implements OnInit {
 
   public cart$: Observable<Product[]>;
+  public auth;
 
-  constructor( private cartService: CartService, private router: Router, public auth: AuthService) {
+  constructor( private cartService: CartService, private router: Router, public authService: AuthService) {
   }
 
   ngOnInit() {
+    this.auth = this.authService;
     this.cart$ = this.cartService.getItems();
   }
 

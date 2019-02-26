@@ -5,7 +5,7 @@
   </mat-card-header>
   <img mat-card-image src="{{item?.imgUrl}}" alt="Image">
   <mat-card-content>
-    <p>{{item?.desc}}</p>
+    <p>{{item?.desc | cutstr}}</p>
   </mat-card-content>
   <mat-card-actions>
     <button mat-flat-button color="primary" [routerLink]="['/products/', item?.id]">More</button>

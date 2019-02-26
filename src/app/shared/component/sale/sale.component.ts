@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { take, mergeMap, toArray } from 'rxjs/operators';
-import { ApiService } from '../../core/services/api/api.service';
-import { Product } from '../../core/models/product.model';
+import { ApiService } from '../../../core/services/api/api.service';
+import { Product } from '../../../core/models/product.model';
 
 
 @Component({

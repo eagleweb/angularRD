@@ -1,3 +1,3 @@
-export * from './layout';
+export * from './component';
 export * from './shared.module';
-export * from './card/card.component';
+
